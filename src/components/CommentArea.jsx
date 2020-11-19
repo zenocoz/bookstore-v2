@@ -7,7 +7,13 @@ class CommentArea extends React.Component {
   state = {}
 
   render() {
-    return <ListGroup>COMMENTS:</ListGroup>
+    return (
+      <ListGroup>
+        COMMENTS
+        <CommentsList></CommentsList>
+        <AddComment></AddComment>
+      </ListGroup>
+    )
   }
 }
 

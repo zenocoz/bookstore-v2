@@ -33,13 +33,13 @@ class SingleBook extends React.Component {
                 text={this.props.singleBook.price}
               />
             </Card.Text>
-          </Card.Body>{" "}
-          {this.state.clicked && (
-            <div className="font-bold d-flex justify-content-center">
-              <CommentArea></CommentArea>
-            </div>
-          )}
-        </Card>
+          </Card.Body>
+        </Card>{" "}
+        {this.state.clicked && (
+          <div className="font-bold d-flex justify-content-center">
+            <CommentArea></CommentArea>
+          </div>
+        )}
       </Col>
     )
   }
