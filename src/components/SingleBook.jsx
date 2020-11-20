@@ -11,6 +11,7 @@ class SingleBook extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <Col>
         <Card
@@ -37,7 +38,7 @@ class SingleBook extends React.Component {
         </Card>{" "}
         {this.state.clicked && (
           <div className="font-bold d-flex justify-content-center">
-            <CommentArea></CommentArea>
+            <CommentArea id={this.props.singleBook._id} />
           </div>
         )}
       </Col>

@@ -38,7 +38,10 @@ class AddComment extends React.Component {
     try {
       let response = await fetch(endpoint, {
         method: "POST",
-        body: JSON.stringify(this.state.reservation),
+        body: JSON.stringify({
+          ...this.state.reservation,
+          elementId: this.props.id,
+        }),
         headers: new Headers({
           "Content-Type": "application/json",
           Authorization:
@@ -126,7 +129,7 @@ class AddComment extends React.Component {
             <Col md={6}>
               <Form.Group>
                 <Form.Label htmlFor="id">
-                  <SingleBook> </SingleBook>
+                  {/* <SingleBook> </SingleBook> */}
                 </Form.Label>
                 <Form.Control
                   type="text"

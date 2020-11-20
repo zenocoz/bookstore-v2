@@ -10,8 +10,8 @@ class CommentArea extends React.Component {
     return (
       <ListGroup>
         COMMENTS
-        <CommentsList></CommentsList>
-        <AddComment></AddComment>
+        <CommentsList />
+        <AddComment id={this.props.id} />
       </ListGroup>
     )
   }
