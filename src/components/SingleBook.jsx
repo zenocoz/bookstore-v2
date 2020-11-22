@@ -1,8 +1,9 @@
 import React from "react"
 
-import { Card, Button, Col } from "react-bootstrap"
+import {Card, Button, Col} from "react-bootstrap"
 import MyBadge from "./MyBadge"
 import CommentArea from "./CommentArea"
+import AddComment from "./AddComment"
 class SingleBook extends React.Component {
   state = {
     color: "primary",
@@ -37,7 +38,7 @@ class SingleBook extends React.Component {
         </Card>{" "}
         {this.state.clicked && (
           <div className="font-bold d-flex justify-content-center">
-            <CommentArea></CommentArea>
+            <AddComment book_id={this.props.singleBook.asin} />
           </div>
         )}
       </Col>

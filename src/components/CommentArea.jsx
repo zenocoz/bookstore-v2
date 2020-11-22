@@ -1,5 +1,5 @@
 import React from "react"
-import { ListGroup } from "react-bootstrap"
+import {ListGroup} from "react-bootstrap"
 import CommentsList from "./CommentsList"
 import AddComment from "./AddComment"
 
@@ -10,8 +10,8 @@ class CommentArea extends React.Component {
     return (
       <ListGroup>
         COMMENTS
-        <CommentsList></CommentsList>
-        <AddComment></AddComment>
+        <CommentsList />
+        <AddComment />
       </ListGroup>
     )
   }
