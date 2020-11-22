@@ -133,6 +133,7 @@ class AddComment extends React.Component {
           </Row>
           <Button type="submit">Submit</Button>
         </Form>
+        <CommentsList book_id={this.state.comment.elementId} />
       </div>
     )
   }
