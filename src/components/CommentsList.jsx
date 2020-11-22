@@ -1,6 +1,6 @@
 import React from "react"
 import AddComment from "./AddComment"
-import {ListGroup} from "react-bootstrap"
+import {ListGroup, Spinner, InputGroup, FormControl} from "react-bootstrap"
 
 class CommentsList extends React.Component {
   state = {
@@ -32,10 +32,33 @@ class CommentsList extends React.Component {
     }
   }
 
+  handleSearch(query) {
+    if (query) {
+      let filteredArray = this.state.comments.filter((comment) =>
+        comment.author.toLowerCase().includes(query.toLowerCase())
+      )
+      this.setState({comments: filteredArray})
+    } else {
+      // this.setState({comments: comments})
+    }
+  }
+
   render() {
     return (
       <div className="mb-5">
         <h2 className="text-center mb-3">COMMENTS</h2>
+        <InputGroup className="mb-3 mt-4">
+          <FormControl
+            onKeyUp={(e) => this.handleSearch(e.target.value)}
+            aria-describedby="basic-addon1"
+          />
+        </InputGroup>
+        {this.state.loading && (
+          <div className="font-bold d-flex justify-content-center">
+            <span>Fetching comments</span>
+            <Spinner animation="border" variant="success" />
+          </div>
+        )}
 
         {this.state.comments.map((comment, index) => (
           <ListGroup key={index}>
