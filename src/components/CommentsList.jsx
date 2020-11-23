@@ -1,6 +1,6 @@
 import React from "react"
 import AddComment from "./AddComment"
-import {ListGroup, Spinner, InputGroup, FormControl} from "react-bootstrap"
+import { ListGroup, Spinner, InputGroup, FormControl } from "react-bootstrap"
 
 class CommentsList extends React.Component {
   state = {
@@ -11,7 +11,6 @@ class CommentsList extends React.Component {
 
   componentDidMount = async () => {
     try {
-      console.log(this.state.id)
       let response = await fetch(
         "https://striveschool-api.herokuapp.com/api/comments/" + this.state.id,
         {
@@ -25,10 +24,11 @@ class CommentsList extends React.Component {
       )
       let comments_ = await response.json()
       console.log(comments_)
-      this.setState({comments: comments_, loading: false})
+      this.setState({ comments: comments_, loading: false })
+      this.props.handleId(this.state.id)
     } catch (e) {
       console.log("error happened, that's life", e)
-      this.setState({loading: false})
+      this.setState({ loading: false })
     }
   }
 
@@ -37,7 +37,7 @@ class CommentsList extends React.Component {
       let filteredArray = this.state.comments.filter((comment) =>
         comment.author.toLowerCase().includes(query.toLowerCase())
       )
-      this.setState({comments: filteredArray})
+      this.setState({ comments: filteredArray })
     } else {
       // this.setState({comments: comments})
     }

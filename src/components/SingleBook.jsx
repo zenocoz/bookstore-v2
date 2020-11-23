@@ -1,9 +1,10 @@
 import React from "react"
 
-import {Card, Button, Col} from "react-bootstrap"
+import { Card, Button, Col } from "react-bootstrap"
 import MyBadge from "./MyBadge"
-import CommentArea from "./CommentArea"
+// import CommentArea from "./CommentArea"
 import AddComment from "./AddComment"
+
 class SingleBook extends React.Component {
   state = {
     color: "primary",
