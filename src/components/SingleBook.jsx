@@ -4,6 +4,7 @@ import { Card, Button, Col } from "react-bootstrap"
 import MyBadge from "./MyBadge"
 // import CommentArea from "./CommentArea"
 import AddComment from "./AddComment"
+import IdManager from "./IdManager"
 
 class SingleBook extends React.Component {
   state = {
@@ -16,11 +17,7 @@ class SingleBook extends React.Component {
     return (
       <Col>
         <Card
-          onClick={() =>
-            this.setState({
-              clicked: !this.state.clicked,
-            })
-          }
+          onClick={() => this.props.handleId(this.props.singleBook.asin)}
           style={{
             width: "18rem",
             backgroundColor: this.state.clicked && "green",

@@ -1,6 +1,7 @@
 import React from "react"
 import { ListGroup } from "react-bootstrap"
 import CommentsList from "./CommentsList"
+import IdManager from "./IdManager"
 
 class CommentArea extends React.Component {
   state = {
@@ -36,22 +37,13 @@ class CommentArea extends React.Component {
     }
   }
 
-  handleId = (id) => {
-    this.setState({ elementId: id })
-    console.log(id)
-  }
   // componentDidUpdate = () => {
   //   console.log("CommentArea updated")
 
   // }
 
   render() {
-    return (
-      <ListGroup>
-        COMMENTS
-        <CommentsList handleId={this.handleId} />
-      </ListGroup>
-    )
+    return <ListGroup>COMMENTS</ListGroup>
   }
 }
 

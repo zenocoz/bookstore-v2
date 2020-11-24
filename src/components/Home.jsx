@@ -26,6 +26,7 @@ let userQuery = null
 class Home extends Component {
   state = {
     books: history,
+    elementId: "",
   }
 
   handleSearch(query) {
@@ -38,6 +39,10 @@ class Home extends Component {
     } else {
       this.setState({ books: history })
     }
+  }
+
+  handleId = (id) => {
+    this.setState({ elementId: id })
   }
   render() {
     return (
@@ -59,7 +64,7 @@ class Home extends Component {
               />
             </InputGroup>
             {this.state.books.length === 0 && <WarningSing text={userQuery} />}
-            <BookList books={this.state.books} />
+            <BookList books={this.state.books} handleId={this.handleId} />
           </Col>
           <Col className="col-3">
             <CommentArea />
