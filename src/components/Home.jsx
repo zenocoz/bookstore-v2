@@ -43,6 +43,7 @@ class Home extends Component {
 
   handleId = (id) => {
     this.setState({ elementId: id })
+    // alert(id)
   }
   render() {
     return (
@@ -67,7 +68,7 @@ class Home extends Component {
             <BookList books={this.state.books} handleId={this.handleId} />
           </Col>
           <Col className="col-3">
-            <CommentArea />
+            <CommentArea book_id={this.state.elementId} />
           </Col>
         </Row>
       </Container>
