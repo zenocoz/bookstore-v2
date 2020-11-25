@@ -1,6 +1,6 @@
 import React from "react"
-import { Alert, Button, Col, Form, Row, Spinner } from "react-bootstrap"
-import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider"
+import {Alert, Button, Col, Form, Row, Spinner} from "react-bootstrap"
+import {ThemeConsumer} from "react-bootstrap/esm/ThemeProvider"
 import CommentsList from "./CommentsList"
 
 class AddComment extends React.Component {
@@ -15,18 +15,18 @@ class AddComment extends React.Component {
   }
 
   updateComment = (e) => {
-    let comment_ = { ...this.state.comment } // creating a copy of the current state
+    let comment_ = {...this.state.comment} // creating a copy of the current state
     let currentId = e.currentTarget.id // 'name', 'phone', etc.
     comment_[currentId] = e.currentTarget.value
 
     // //reservation['name'] --> reservation.name = 'S'
     // //reservation['phone'] --> reservation.phone = '3'
-    this.setState({ comment: comment_ })
+    this.setState({comment: comment_})
   }
 
   submitComment = async (e) => {
     e.preventDefault()
-    this.setState({ loading: true })
+    this.setState({loading: true})
     try {
       let response = await fetch(
         "https://striveschool-api.herokuapp.com/api/comments/",
@@ -69,8 +69,6 @@ class AddComment extends React.Component {
   }
 
   render() {
-    // return <CommentsList>rate="BUONO"</CommentsList>
-
     return (
       <div>
         {this.state.errMessage && (
@@ -117,23 +115,10 @@ class AddComment extends React.Component {
                 />
               </Form.Group>
             </Col>
-            {/* <Col md={6}>
-              <Form.Group>
-                <Form.Label htmlFor="elementId"></Form.Label>
-                <Form.Control
-                  type="text"
-                  name="elementId"
-                  id="elementId"
-                  placeholder="ID"
-                  value={this.props.book_id}
-                  onChange={this.updateComment}
-                />
-              </Form.Group>
-            </Col> */}
           </Row>
           <Button type="submit">Submit</Button>
         </Form>
-        {/* <CommentsList book_id={this.state.comment.elementId} /> */}
+        <CommentsList book_id={this.state.comment.elementId} />
       </div>
     )
   }

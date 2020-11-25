@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, {Component} from "react"
 import {
   Container,
   InputGroup,
@@ -26,6 +26,7 @@ let userQuery = null
 class Home extends Component {
   state = {
     books: history,
+    elementId: "",
   }
 
   handleSearch(query) {
@@ -33,12 +34,18 @@ class Home extends Component {
       let filteredArray = this.state.books.filter((book) =>
         book.title.toLowerCase().includes(query.toLowerCase())
       )
-      this.setState({ books: filteredArray })
+      this.setState({books: filteredArray})
       userQuery = query
     } else {
-      this.setState({ books: history })
+      this.setState({books: history})
     }
   }
+
+  handleId = (id) => {
+    this.setState({elementId: id})
+    console.log(id)
+  }
+
   render() {
     return (
       <Container className="mt-5">
@@ -59,10 +66,14 @@ class Home extends Component {
               />
             </InputGroup>
             {this.state.books.length === 0 && <WarningSing text={userQuery} />}
-            <BookList books={this.state.books} />
+            <BookList
+              books={this.state.books}
+              handleId={this.handleId}
+              test="Test"
+            />
           </Col>
           <Col className="col-3">
-            <CommentArea />
+            <CommentArea id={this.state.elementId} />
           </Col>
         </Row>
       </Container>

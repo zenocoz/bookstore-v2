@@ -1,17 +1,17 @@
 import React from "react"
-import { ListGroup } from "react-bootstrap"
+import {ListGroup} from "react-bootstrap"
 import CommentsList from "./CommentsList"
 
 class CommentArea extends React.Component {
   state = {
     comments: [],
-    elementID: "",
+    elementID: this.props.id,
     loading: true,
   }
 
   componentDidMount = async () => {
     console.log("There are no comments")
-    console.log(this.state.elementID)
+    // console.log(this.state.elementID)
   }
 
   fetchComments = async () => {
@@ -29,17 +29,13 @@ class CommentArea extends React.Component {
       )
       let comments_ = await response.json()
       console.log(comments_)
-      this.setState({ comments: comments_, loading: false })
+      this.setState({comments: comments_, loading: false})
     } catch (e) {
       console.log("error happened, that's life", e)
-      this.setState({ loading: false })
+      this.setState({loading: false})
     }
   }
 
-  handleId = (id) => {
-    this.setState({ elementId: id })
-    console.log(id)
-  }
   // componentDidUpdate = () => {
   //   console.log("CommentArea updated")
 
@@ -49,7 +45,8 @@ class CommentArea extends React.Component {
     return (
       <ListGroup>
         COMMENTS
-        <CommentsList handleId={this.handleId} />
+        <CommentsList />
+        {/* <CommentsList handleId={this.handleId} /> */}
       </ListGroup>
     )
   }
