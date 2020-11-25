@@ -16,6 +16,7 @@ const BookList = (props) => {
     <Row>
       {props.books.slice(0, 12).map((book) => (
         <SingleBook
+          handleId={props.handleId}
           onClicked={() => handleSelect(book)}
           clicked={null}
           key={book.asin}

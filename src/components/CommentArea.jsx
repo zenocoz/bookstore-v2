@@ -1,6 +1,7 @@
 import React from "react"
 import {ListGroup} from "react-bootstrap"
 import CommentsList from "./CommentsList"
+import IdManager from "./IdManager"
 
 class CommentArea extends React.Component {
   state = {
@@ -11,13 +12,14 @@ class CommentArea extends React.Component {
 
   componentDidMount = async () => {
     console.log("There are no comments")
-    // console.log(this.state.elementID)
+    this.setState({ elementID: this.props.book_id })
+    this.fetchComments()
   }
 
   fetchComments = async () => {
     try {
       let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/" + this.state.id,
+        "https://striveschool-api.herokuapp.com/api/comments/" + this.elementID,
         {
           method: "GET",
           headers: new Headers({

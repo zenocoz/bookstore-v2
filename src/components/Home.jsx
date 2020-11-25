@@ -42,8 +42,9 @@ class Home extends Component {
   }
 
   handleId = (id) => {
-    this.setState({elementId: id})
-    console.log(id)
+
+    this.setState({ elementId: id })
+    // alert(id)
   }
 
   render() {
